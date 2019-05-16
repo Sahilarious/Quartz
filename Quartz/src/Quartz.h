@@ -4,6 +4,7 @@
 
 #include "Quartz/Layer.h"
 #include "Quartz/Log.h"
+#include "Quartz/ImGui/ImGuiLayer.h" 
 
 
 // -------------- Entry Point ------------------
