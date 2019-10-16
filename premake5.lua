@@ -17,10 +17,11 @@ IncludeDir["Glad"] = "Quartz/vendor/Glad/include"
 IncludeDir["Imgui"] = "Quartz/vendor/imgui"
 
 
-
-include "Quartz/vendor/GLFW"
-include "Quartz/vendor/Glad"
-include "Quartz/vendor/imgui"
+group "Dependencies"
+    include "Quartz/vendor/GLFW"
+    include "Quartz/vendor/Glad"
+    include "Quartz/vendor/imgui"
+group ""
 
 project "Quartz"
     location "Quartz"
@@ -71,7 +72,7 @@ project "Quartz"
 
         postbuildcommands
         {
-            ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+            ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox\"")
         }
 
     filter "configurations:Debug"
@@ -93,7 +94,7 @@ project "Sandbox"
    location "Sandbox"
    kind "ConsoleApp"
    language "C++"
-   ststicruntime "off"
+   staticruntime "off"
 
    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")

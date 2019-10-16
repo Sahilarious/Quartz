@@ -11,12 +11,23 @@ public:
 
 	void OnUpdate() override
 	{
-		QZ_INFO("ExampleLayer::Update");
+		if (Quartz::Input::IsKeyPressed(QZ_KEY_TAB))
+		{
+			QZ_INFO("Tab pressed!!!!!!!!!!!!! (poll)");
+		}
 	}
 
 	void OnEvent(Quartz::Event& event) override
 	{
-		QZ_TRACE("{0}", event);
+		if (event.GetEventType() == Quartz::EventType::KeyPressed)
+		{
+			Quartz::KeyPressedEvent& e = (Quartz::KeyPressedEvent&)event;
+			if (Quartz::Input::IsKeyPressed(QZ_KEY_TAB))
+			{
+				QZ_INFO("Tab pressed!!!!!!!!!!!!! (event)");
+			}
+			QZ_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 

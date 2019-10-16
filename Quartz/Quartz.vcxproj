@@ -93,7 +93,7 @@
       <ImportLibrary>..\bin\Debug-windows-x86_64\Quartz\Quartz.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Quartz\Quartz.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Quartz\Quartz.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Quartz\Quartz.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Quartz\Quartz.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Quartz\Quartz.dll "..\bin\Debug-windows-x86_64\Sandbox" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Quartz\Quartz.dll "..\bin\Debug-windows-x86_64\Sandbox" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -119,7 +119,7 @@
       <ImportLibrary>..\bin\Release-windows-x86_64\Quartz\Quartz.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release-windows-x86_64\Quartz\Quartz.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Quartz\Quartz.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Quartz\Quartz.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Release-windows-x86_64\Quartz\Quartz.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Quartz\Quartz.dll "..\bin\Release-windows-x86_64\Sandbox" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Quartz\Quartz.dll "..\bin\Release-windows-x86_64\Sandbox" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -145,13 +145,14 @@
       <ImportLibrary>..\bin\Dist-windows-x86_64\Quartz\Quartz.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Dist-windows-x86_64\Quartz\Quartz.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\Quartz\Quartz.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\Quartz\Quartz.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Dist-windows-x86_64\Quartz\Quartz.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\Quartz\Quartz.dll "..\bin\Dist-windows-x86_64\Sandbox" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\Quartz\Quartz.dll "..\bin\Dist-windows-x86_64\Sandbox" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\OpenGL\imgui_impl_glfw.h" />
-    <ClInclude Include="src\Platform\WindowsWindow.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Quartz.h" />
     <ClInclude Include="src\Quartz\Application.h" />
     <ClInclude Include="src\Quartz\Core.h" />
@@ -161,16 +162,20 @@
     <ClInclude Include="src\Quartz\Events\KeyEvent.h" />
     <ClInclude Include="src\Quartz\Events\MouseEvent.h" />
     <ClInclude Include="src\Quartz\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Quartz\Input.h" />
+    <ClInclude Include="src\Quartz\KeyCodes.h" />
     <ClInclude Include="src\Quartz\Layer.h" />
     <ClInclude Include="src\Quartz\LayerStack.h" />
     <ClInclude Include="src\Quartz\Log.h" />
+    <ClInclude Include="src\Quartz\MouseButtonCodes.h" />
     <ClInclude Include="src\Quartz\Window.h" />
     <ClInclude Include="src\qzpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\imgui_impl_glfw.cpp" />
-    <ClCompile Include="src\Platform\WindowsWindow.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Quartz\Application.cpp" />
     <ClCompile Include="src\Quartz\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Quartz\Layer.cpp" />

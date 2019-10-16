@@ -7,7 +7,7 @@
 
 namespace Quartz
 {
-	// serves a wrapper for the layer class
+	// serves as wrapper for the layer class
 	class QUARTZ_API LayerStack
 	{
 	public:

@@ -3,6 +3,7 @@
 
 #include <glad/glad.h>
 
+#include "Input.h"
 
 namespace Quartz
 {
@@ -64,6 +65,9 @@ namespace Quartz
 			{
 				layer->OnUpdate();
 			}
+			auto[x, y] = Input::GetMousePosition();
+
+			//QZ_CORE_TRACE("{0}, {1}", x, y);
 
 			m_Window->OnUpdate();
 		}
