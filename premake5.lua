@@ -15,6 +15,8 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Quartz/vendor/GLFW/include"
 IncludeDir["Glad"] = "Quartz/vendor/Glad/include"
 IncludeDir["Imgui"] = "Quartz/vendor/imgui"
+IncludeDir["glm"] = "Quartz/vendor/glm"
+
 
 
 group "Dependencies"
@@ -38,7 +40,9 @@ project "Quartz"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/glm/glm/**.hpp",
+        "%{prj.name}/vendor/glm/glm/**.inl"
     }
 
     includedirs
@@ -47,7 +51,8 @@ project "Quartz"
         "%{prj.name}/vendor/spdlog/include",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
-        "%{IncludeDir.Imgui}"
+        "%{IncludeDir.Imgui}",
+        "%{IncludeDir.glm}"
     }
 
     links
@@ -99,6 +104,8 @@ project "Sandbox"
    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+   IncludeDir["Imgui"] = "Quartz/vendor/imgui"
+   
    files
    {
        "%{prj.name}/src/**.h",
@@ -108,12 +115,16 @@ project "Sandbox"
    includedirs
    {
        "Quartz/vendor/spdlog/include",
-       "Quartz/src"
+       "Quartz/src",
+       "Quartz/vendor",
+       "%{IncludeDir.glm}",
+       "%{IncludeDir.Imgui}"
    }
 
    links
    {
-       "Quartz"
+       "Quartz",
+       "Imgui"
    }
 
    filter "system:windows"

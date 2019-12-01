@@ -5,7 +5,6 @@ namespace Quartz
 {
 	LayerStack::LayerStack()
 	{
-		m_LayerInsert = m_Layers.begin();
 	}
 
 
@@ -17,7 +16,8 @@ namespace Quartz
 
 	void LayerStack::PushLayer(Layer* layer)
 	{
-		m_LayerInsert = m_Layers.emplace(m_LayerInsert, layer);
+		 m_Layers.emplace(m_Layers.begin() + m_LayerInsertIndex, layer);
+		 m_LayerInsertIndex++;
 	}
 
 	// overlays are always at the end of the stack because they are layers that
@@ -33,7 +33,7 @@ namespace Quartz
 		if (it != m_Layers.end())
 		{
 			m_Layers.erase(it);
-			m_LayerInsert--;
+			m_LayerInsertIndex--;
 		}
 	}
 
