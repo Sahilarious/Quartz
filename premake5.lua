@@ -27,9 +27,10 @@ group ""
 
 project "Quartz"
     location "Quartz"
-    kind "SharedLib"
+    kind "StaticLib"
     language "C++"
-    staticruntime "off"
+    cppdialect "C++17"
+    staticruntime "on"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -43,6 +44,11 @@ project "Quartz"
         "%{prj.name}/src/**.cpp",
         "%{prj.name}/vendor/glm/glm/**.hpp",
         "%{prj.name}/vendor/glm/glm/**.inl"
+    }
+
+    defines
+    {
+        "_CRT_SECURE_NO_WARNINGS"
     }
 
     includedirs
@@ -64,8 +70,6 @@ project "Quartz"
     }
 
     filter "system:windows"
-        cppdialect "C++17"
-        staticruntime "On"
         systemversion "latest"
 
         defines
@@ -75,36 +79,31 @@ project "Quartz"
             "GLFW_INCLUDE_NONE"
         }
 
-        postbuildcommands
-        {
-            ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox\"")
-        }
-
     filter "configurations:Debug"
         defines "QZ_DEBUG"
         runtime "Debug"  -- use staticruntime for static library (multi threaded debug), as opposed to a dynamic linked library (multi threaded debug dll)
-        symbols "On"
+        symbols "on"
 
     filter "configurations:Release"
         defines "QZ_RELEASE"
         runtime "Release"
-        optimize "On"
+        optimize "on"
 
     filter "configurations:Dist"
         defines "QZ_DIST"
         runtime "Release"
-        optimize "On"
+        optimize "on"
 
 project "Sandbox"
    location "Sandbox"
    kind "ConsoleApp"
    language "C++"
-   staticruntime "off"
+   cppdialect "C++17"
+   staticruntime "on"
 
    targetdir ("bin/" .. outputdir .. "/%{prj.name}")
    objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-   IncludeDir["Imgui"] = "Quartz/vendor/imgui"
    
    files
    {
@@ -118,17 +117,14 @@ project "Sandbox"
        "Quartz/src",
        "Quartz/vendor",
        "%{IncludeDir.glm}",
-       "%{IncludeDir.Imgui}"
    }
 
    links
    {
-       "Quartz",
-       "Imgui"
+       "Quartz"
    }
 
    filter "system:windows"
-       cppdialect "C++17"
        systemversion "latest"
 
        defines
@@ -139,16 +135,16 @@ project "Sandbox"
    filter "configurations:Debug"
        defines "QZ_DEBUG"
        runtime "Debug"
-       symbols "On"
+       symbols "on"
 
    filter "configurations:Release"
        defines "QZ_RELEASE"
        runtime "Release"
-       optimize "On"
+       optimize "on"
 
    filter "configurations:Dist"
        defines "QZ_DIST"
        runtime "Release"
-       optimize "On"
+       optimize "on"
 
 

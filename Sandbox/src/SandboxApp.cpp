@@ -39,12 +39,9 @@ public:
 
 	virtual void OnImGuiRenderer() override
 	{
-		//ImGui::CreateContext();
-		//ImGui::NewFrame();
-		//ImGui::Begin("Test");
-		//ImGui::Text("Hello World");
-		//ImGui::End();
-
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
 	}
 
 	void OnEvent(Quartz::Event& event) override

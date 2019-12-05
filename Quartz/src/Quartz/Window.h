@@ -25,7 +25,7 @@ namespace Quartz
 		}
 	};
 
-	class QUARTZ_API Window
+	class  Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;

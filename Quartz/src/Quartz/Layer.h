@@ -6,7 +6,7 @@
 namespace Quartz
 {
 	// abstract class from which other engine layer classes will derive from
-	class QUARTZ_API Layer
+	class  Layer
 	{
 	public:
 		Layer(const std::string& name = "Layer");

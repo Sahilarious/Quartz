@@ -12,7 +12,7 @@
 
 namespace Quartz
 { 
-	class QUARTZ_API Application
+	class  Application
 	{
 	public:
 		Application();

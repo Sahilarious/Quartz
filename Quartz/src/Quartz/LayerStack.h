@@ -8,7 +8,7 @@
 namespace Quartz
 {
 	// serves as wrapper for the layer class
-	class QUARTZ_API LayerStack
+	class  LayerStack
 	{
 	public:
 		LayerStack();

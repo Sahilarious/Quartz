@@ -2,11 +2,15 @@
 
 
 #ifdef QZ_PLATFORM_WINDOWS
+#if QZ_DYNAMIC_LINK
 	#ifdef QZ_BUILD_DLL
-		#define QUARTZ_API __declspec(dllexport)
+		#define  __declspec(dllexport)
 	#else
-		#define QUARTZ_API __declspec(dllimport)
+		#define  __declspec(dllimport)
 	#endif
+#else 
+    #define QUARTZ_API
+#endif
 #else
 	#error Quartz only supports Windows!
 #endif
