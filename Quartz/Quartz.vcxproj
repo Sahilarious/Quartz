@@ -157,6 +157,8 @@
     <ClInclude Include="src\Quartz\LayerStack.h" />
     <ClInclude Include="src\Quartz\Log.h" />
     <ClInclude Include="src\Quartz\MouseButtonCodes.h" />
+    <ClInclude Include="src\Quartz\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Quartz\Window.h" />
     <ClInclude Include="src\qzpch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -529,6 +531,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Quartz\Application.cpp" />

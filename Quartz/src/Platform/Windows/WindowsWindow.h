@@ -4,6 +4,7 @@
 #include "Quartz/Window.h"
 #include <GLFW/glfw3.h>
 
+#include "Quartz/Renderer/GraphicsContext.h"
 
 namespace Quartz
 {
@@ -30,6 +31,7 @@ namespace Quartz
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{
