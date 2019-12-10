@@ -5,7 +5,7 @@
 
 namespace Quartz
 {
-	Quartz::Shader::Shader(const std::string & vertexSrc, const std::string & fragmentSrc)
+	Shader::Shader(const std::string & vertexSrc, const std::string & fragmentSrc)
 	{
 			// Create an empty vertex shader handle
 		GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
