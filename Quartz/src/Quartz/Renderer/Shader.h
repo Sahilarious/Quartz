@@ -1,23 +1,20 @@
 #pragma once
 
-
 #include <string>
-
 
 namespace Quartz
 {
 	class Shader
 	{
 	public:
-		Shader(const std::string& vertexSrc, const std::string& fragmentSrc);
-		~Shader();
+		~Shader() {};
 
-		void Bind();
-		void Unbind();
+		virtual void Bind() const = 0;
+		virtual void Unbind() const = 0;
 
-	private:
+		static Shader* Create(const std::string& vertexSrc, const std::string& fragmentSrc);
+
+	protected:
 		uint32_t m_RendererID;
 	};
-
-
 }
